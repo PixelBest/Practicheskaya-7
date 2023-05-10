@@ -55,26 +55,26 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="AddAnim.xaml">
+    <Page Include="View\AddAnim.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="AddAnim.xaml.cs">
+    <Compile Include="View\AddAnim.xaml.cs">
       <DependentUpon>AddAnim.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Animals.cs" />
+    <Compile Include="Model\Animals.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="CreateAnim.cs" />
-    <Compile Include="Creator.cs" />
-    <Compile Include="Data.cs" />
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="Presenter\CreateAnim.cs" />
+    <Compile Include="Model\Creator.cs" />
+    <Compile Include="Presenter\Data.cs" />
+    <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
@@ -105,5 +105,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
