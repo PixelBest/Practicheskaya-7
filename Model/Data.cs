@@ -9,6 +9,8 @@ using System.IO;
 using System.Windows.Controls;
 using System.Xml.Serialization;
 using System.Collections.ObjectModel;
+using Practicheskaya_7.DataBase;
+using Practicheskaya_7.Model;
 
 namespace Practicheskaya_7
 {
@@ -18,12 +20,12 @@ namespace Practicheskaya_7
         {
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.FileName = "Animals";
-            sfd.Filter = "Text file(*.txt)|*.txt| Xml file(*.xml)|*.xml";
+            sfd.Filter = "Text file (*.txt)|*.txt| Xml file (*.xml)|*.xml";
             if(sfd.ShowDialog() == true)
             {
                 using (StreamWriter sw = new StreamWriter(sfd.FileName))
-                    foreach (Animals animals in CreateAnim.anim)
-                        sw.WriteLine($"{animals.KindOfAnimals}-{animals.Name}-{animals.Age}-{animals.Gender}");
+                    foreach (AnimalsTable animals in AnimalsViewModel.OCAnimals)
+                        sw.WriteLine($"{animals.KindOfAnimal}-{animals.Name}-{animals.Age}-{animals.Gender}");
                 MessageBox.Show("Сохранение прошло успешно");
             }
         }

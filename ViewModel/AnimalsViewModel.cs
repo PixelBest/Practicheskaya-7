@@ -14,8 +14,9 @@ namespace Practicheskaya_7.Model
 {
     internal class AnimalsViewModel : INotifyPropertyChanged
     {
+        public static ObservableCollection<AnimalsTable> OCAnimals;
         public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropetryChanged([CallerMemberName] string propertyName = null)
+        protected void OnPropetryChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
@@ -82,6 +83,7 @@ namespace Practicheskaya_7.Model
         {
             AddAnimalTable.Id = Convert.ToString(animalsEntities3.AnimalsTable.Count() + 1);
             ListAnimalsTable.Add(AddAnimalTable);
+            OCAnimals.Add(AddAnimalTable);
             animalsEntities3.AnimalsTable.Add(AddAnimalTable);
             animalsEntities3.SaveChanges();
             AddAnimalTable = new AnimalsTable();
@@ -104,11 +106,13 @@ namespace Practicheskaya_7.Model
             animalsEntities3.AnimalsTable.Remove(anim);
             animalsEntities3.SaveChanges();
             ListAnimalsTable.Remove(anim);
+            OCAnimals.Remove(anim);
         }
 
         private void LoadAnimals()
         {
             ListAnimalsTable = new ObservableCollection<AnimalsTable>(animalsEntities3.AnimalsTable);
+            OCAnimals = new ObservableCollection<AnimalsTable>(animalsEntities3.AnimalsTable);
         }
 
         public ICommand DeleteCommand { get; set; }

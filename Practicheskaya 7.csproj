@@ -67,10 +67,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="View\AddAnim.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Compile Include="DataBase\AnimalsTable.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -89,10 +85,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Model\AnimalsViewModel.cs" />
-    <Compile Include="View\AddAnim.xaml.cs">
-      <DependentUpon>AddAnim.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="ViewModel\AnimalsViewModel.cs" />
     <Compile Include="Model\Animals.cs" />
     <Compile Include="View\AnimalTable.xaml.cs">
       <DependentUpon>AnimalTable.xaml</DependentUpon>

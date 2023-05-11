@@ -7,20 +7,18 @@
         mc:Ignorable="d"
         Title="AnimalTable" Height="484" Width="800">
     <Grid>
-        <Menu HorizontalAlignment="Center" Height="22" VerticalAlignment="Top" Width="800">
-            <MenuItem Header="Файл" FontSize="15">
-                <MenuItem Header="Создать коллекцию животных" Click="CreateAnimals"/>
-                <MenuItem Header="Добавить животное" Click="AddAnimals"/>
+        <Menu HorizontalAlignment="Center" Height="22" VerticalAlignment="Top" Width="780">
+            <MenuItem Header="Файл" FontSize="12">
                 <MenuItem Header="Сохранить данные" Click="SaveData"/>
             </MenuItem>
-            <MenuItem Header="Помощь" FontSize="15"/>
+            <MenuItem Header="Помощь" FontSize="12"/>
         </Menu>
         <ListView Margin="0,27,0,0" ItemsSource="{Binding ListAnimalsTable}">
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
                         <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Id}" Width="20"/>
-                        <GridViewColumn Header="Вид" DisplayMemberBinding="{Binding KindOfAnimal}" Width="30"/>
+                        <GridViewColumn Header="Вид" DisplayMemberBinding="{Binding KindOfAnimal}" Width="110"/>
                         <GridViewColumn Header="Название" DisplayMemberBinding="{Binding Name}" Width="60"/>
                         <GridViewColumn Header="Возраст" DisplayMemberBinding="{Binding Age}" Width="50"/>
                         <GridViewColumn Header="Пол" DisplayMemberBinding="{Binding Gender}" Width="30"/>

@@ -26,18 +26,6 @@ namespace Practicheskaya_7.View
             DataContext = new AnimalsViewModel();
         }
 
-        private void CreateAnimals(object sender, RoutedEventArgs e)
-        {
-            CreateAnim.Create();
-            /*dataGrid1.ItemsSource = CreateAnim.anim;*/
-        }
-
-        private void AddAnimals(object sender, RoutedEventArgs e)
-        {
-            AddAnim an = new AddAnim();
-            an.Show();
-        }
-
         private void SaveData(object sender, RoutedEventArgs e)
         {
             Data.SaveData();
