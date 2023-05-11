@@ -1,0 +1,104 @@
+﻿<Window x:Class="Practicheskaya_7.View.AnimalTable"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Practicheskaya_7.View"
+        mc:Ignorable="d"
+        Title="AnimalTable" Height="484" Width="800">
+    <Grid>
+        <Menu HorizontalAlignment="Center" Height="22" VerticalAlignment="Top" Width="800">
+            <MenuItem Header="Файл" FontSize="15">
+                <MenuItem Header="Создать коллекцию животных" Click="CreateAnimals"/>
+                <MenuItem Header="Добавить животное" Click="AddAnimals"/>
+                <MenuItem Header="Сохранить данные" Click="SaveData"/>
+            </MenuItem>
+            <MenuItem Header="Помощь" FontSize="15"/>
+        </Menu>
+        <ListView Margin="0,27,0,0" ItemsSource="{Binding ListAnimalsTable}">
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Id}" Width="20"/>
+                        <GridViewColumn Header="Вид" DisplayMemberBinding="{Binding KindOfAnimal}" Width="30"/>
+                        <GridViewColumn Header="Название" DisplayMemberBinding="{Binding Name}" Width="60"/>
+                        <GridViewColumn Header="Возраст" DisplayMemberBinding="{Binding Age}" Width="50"/>
+                        <GridViewColumn Header="Пол" DisplayMemberBinding="{Binding Gender}" Width="30"/>
+                        <GridViewColumn Header="Действия">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal" Margin="4">
+                                        <Button Name="BtnUpdate" Content="Обновить" Width="60" Height="25" Margin="10,0,0,0"
+                                                Command="{Binding DataContext.UpdateCommand,
+                                                RelativeSource={RelativeSource AncestorType={x:Type ListView}}}" 
+                                                CommandParameter="{Binding}"/>
+                                        <Button Name="BtnDelete" Content="Удалить" Width="60" Height="25" Margin="10,0,0,0"
+                                                Command="{Binding DataContext.DeleteCommand,
+                                                RelativeSource={RelativeSource AncestorType={x:Type ListView}}}" 
+                                                CommandParameter="{Binding}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Grid Margin="0,105,0,-105">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Margin="28,-41,10,269" Grid.Column="1">
+                <Label Content="Добавить новое животное" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Grid Margin="5" Height="134">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" Content="Вид"/>
+                    <TextBox Name="t1" Grid.Row="0" Grid.Column="1" Text="{Binding AddAnimalTable.KindOfAnimal}"/>
+                    <Label Grid.Row="1" Grid.Column="0" Content="Название"/>
+                    <TextBox Name="t2" Grid.Row="1" Grid.Column="1" Text="{Binding AddAnimalTable.Name}"/>
+                    <Label Grid.Row="2" Grid.Column="0" Content="Возраст"/>
+                    <TextBox Name="t3" Grid.Row="2" Grid.Column="1" Text="{Binding AddAnimalTable.Age}"/>
+                    <Label Grid.Row="3" Grid.Column="0" Content="Пол"/>
+                    <TextBox Name="t4" Grid.Row="3" Grid.Column="1" Text="{Binding AddAnimalTable.Gender}"/>
+                    <Button Grid.Row="4" Content="Добавить" Margin="0,5,5,0" HorizontalAlignment="Right" Command="{Binding AddAnimalsCommand}" Grid.Column="1"/>
+                </Grid>
+            </StackPanel>
+            <StackPanel Margin="40,150,10,90" Grid.Column="1">
+                <Label Content="Обновить данные о животном" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Grid Margin="5" Height="134">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" Content="Вид"/>
+                    <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding SelectedAnimal.KindOfAnimal}"/>
+                    <Label Grid.Row="1" Grid.Column="0" Content="Название"/>
+                    <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding SelectedAnimal.Name}"/>
+                    <Label Grid.Row="2" Grid.Column="0" Content="Возраст"/>
+                    <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding SelectedAnimal.Age}"/>
+                    <Label Grid.Row="3" Grid.Column="0" Content="Пол"/>
+                    <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding SelectedAnimal.Gender}"/>
+                    <Button Grid.Row="4" Content="Обновить" Margin="0,5,5,0" HorizontalAlignment="Right" Command="{Binding UpdateAnimalsCommand}" Grid.Column="1"/>
+                </Grid>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
